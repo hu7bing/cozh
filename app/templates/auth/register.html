@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky - Register{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>注册</h1>
+</div>
+        <div class="index-tab-navs">
+    <div class="navs-slider" data-active-index="1">
+
+
+        <a class="active" href="{{ url_for('auth.register') }}"data-hover="login">注册</a>
+
+
+
+        <a href="{{ url_for('auth.login') }}"data-hover="logup">登录</a>
+
+        <span class="navs-slider-bar"></span>
+    </div>
+    </div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

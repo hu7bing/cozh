@@ -1,0 +1,26 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Flasky{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+<li class="cl-effect-11"><a href="{{ url_for('auth.login') }}"data-hover="login">login</a></li>
+{% endblock %}
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
