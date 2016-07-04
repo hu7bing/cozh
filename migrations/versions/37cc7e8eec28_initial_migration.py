@@ -1,13 +1,13 @@
-"""initial email
+"""initial migration
 
-Revision ID: f968be5776e
+Revision ID: 37cc7e8eec28
 Revises: None
-Create Date: 2016-06-19 10:53:22.433088
+Create Date: 2016-07-04 09:43:16.795319
 
 """
 
 # revision identifiers, used by Alembic.
-revision = 'f968be5776e'
+revision = '37cc7e8eec28'
 down_revision = None
 
 from alembic import op
