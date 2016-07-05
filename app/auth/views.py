@@ -8,11 +8,15 @@ from ..email import send_email
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
     PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 
-
+'''
+fun:更新已登录用户访问时间
+before_app_request处理程序在每次请求前运行
+每次请求前运行当前用户登入时间->无登录->返回无登录页面
+'''
 @auth.before_app_request
 def before_request():
     if current_user.is_authenticated:
-        current_user.ping()
+        current_user.ping() #每次请求前运行当前用户登入时间
         if not current_user.confirmed \
                 and request.endpoint[:5] != 'auth.' \
                 and request.endpoint != 'static':
@@ -26,26 +30,36 @@ def unconfirmed():
     return render_template('auth/unconfirmed.html')
 
 
-@auth.route('/register', methods=['GET', 'POST'])
+'''
+fun:登录路由
+搜索用户email->判断存在并且密码正确->登入用户->重定向之前页面
+'''
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user is not None and user.verify_password(form.password.data):
-            login_user(user, form.remember_me.data)
-            return redirect(request.args.get('next') or url_for('main.index'))
+        if user is not None and user.verify_password(form.password.data):#加入密码判断
+            login_user(user, form.remember_me.data)  #登录用户
+            return redirect(request.args.get('next') or url_for('main.index'))#重定向到之前页面
         flash('Invalid username or password.')
     return render_template('auth/login.html', form=form)
 
-
+'''
+fun:登出路由
+@login_required   #Flask-Login的保护路由，拦截未登录用户请求，并把用户发往登录页面
+'''
 @auth.route('/logout')
-@login_required
+@login_required  #Flask-Login的保护路由
 def logout():
-    logout_user()
+    logout_user()  #登出用户
     flash('You have been logged out.')
     return redirect(url_for('main.index'))
 
-
+'''
+fun:注册路由
+获取表单数据，commit数据库->陈生成令牌字符串->发送账号确认邮件->重定向到登录页面
+'''
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -60,14 +74,17 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        token = user.generate_confirmation_token()
+        token = user.generate_confirmation_token() #生成令牌字符串
         send_email(user.email, 'Confirm Your Account',
                    'auth/email/confirm', user=user, token=token)
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html', form=form)
 
-
+'''
+fun:确认用户，
+用户点击带令牌字符串的链接->confirm(token)解析确认
+'''
 @auth.route('/confirm/<token>')
 @login_required
 def confirm(token):
@@ -79,7 +96,9 @@ def confirm(token):
         flash('The confirmation link is invalid or has expired.')
     return redirect(url_for('main.index'))
 
-
+'''
+fun:发送带令牌的email
+'''
 @auth.route('/confirm')
 @login_required
 def resend_confirmation():
@@ -89,7 +108,9 @@ def resend_confirmation():
     flash('A new confirmation email has been sent to you by email.')
     return redirect(url_for('main.index'))
 
-
+'''
+fun:更换密码
+'''
 @auth.route('/change-password', methods=['GET', 'POST'])
 @login_required
 def change_password():
@@ -104,7 +125,9 @@ def change_password():
             flash('Invalid password.')
     return render_template("auth/change_password.html", form=form)
 
-
+'''
+fun:发送带令牌的email
+'''
 @auth.route('/reset', methods=['GET', 'POST'])
 def password_reset_request():
     if not current_user.is_anonymous:
@@ -123,7 +146,10 @@ def password_reset_request():
         return redirect(url_for('auth.login'))
     return render_template('auth/reset_password.html', form=form)
 
+'''
+fun:确认更改的密码
 
+'''
 @auth.route('/reset/<token>', methods=['GET', 'POST'])
 def password_reset(token):
     if not current_user.is_anonymous:

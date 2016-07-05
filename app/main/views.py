@@ -12,7 +12,10 @@ from ..models import Permission, Role, User
 def index():
 
     return render_template('index.html')
-
+'''
+fun:用户资料页面路由
+搜索指定用户->渲染用户页面
+'''
 @main.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()

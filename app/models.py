@@ -67,6 +67,9 @@ class User(UserMixin,db.Model):
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_hash = db.Column(db.String(32))
 
+    '''
+    初始化，赋予环境变量指定的管理员权限
+    '''
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
         if self.role is None:
@@ -91,23 +94,30 @@ class User(UserMixin,db.Model):
     def password(self):
         raise AttributeError('password is not a readable attribute')
 
+    #只写属性，避免生成的散列值被读取（单向）
     @password.setter
     def password(self, password):
         self.password_hash = generate_password_hash(password)
 
+    #接受一个密码并与和存储在 User 模型中的密码散列值进行比对
+    #return true 密码正确
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    #根据一个字符串生成一个令牌字符串，默认时间1h
     def generate_confirmation_token(self, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'confirm': self.id})
 
+    #检验令牌，正确设置confirm字段为true
     def confirm(self, token):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
             data = s.loads(token)
         except:
             return False
+        #加对比current_user 中的已登录来用户来匹配，防止恶意用户知道如何生成签名令牌
+        #这样无法确认别人的账户
         if data.get('confirm') != self.id:
             return False
         self.confirmed = True
