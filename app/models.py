@@ -50,6 +50,13 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
+class Praise(db.Model):
+    __tablename__ = 'praises'
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
+                            primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'),
+                            primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 class User(UserMixin,db.Model):
@@ -66,6 +73,13 @@ class User(UserMixin,db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_hash = db.Column(db.String(32))
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
+
+    praises = db.relationship('Praise',
+                              foreign_keys=[Praise.user_id],
+                              backref='praised', lazy='dynamic')
+    praise_count = db.Column(db.Integer,default=0)
+
 
     '''
     初始化，赋予环境变量指定的管理员权限
@@ -81,34 +95,26 @@ class User(UserMixin,db.Model):
             self.avatar_hash = hashlib.md5(
                 self.email.encode('utf-8')).hexdigest()
         #self.followed.append(Follow(followed=self))
-
-
-
     @staticmethod
     def Del(self):
         user = User.query.filter_by(email=self).first()
         db.session.delete(user)
         db.session.commit()
-
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
-
     #只写属性，避免生成的散列值被读取（单向）
     @password.setter
     def password(self, password):
         self.password_hash = generate_password_hash(password)
-
     #接受一个密码并与和存储在 User 模型中的密码散列值进行比对
     #return true 密码正确
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
-
     #根据一个字符串生成一个令牌字符串，默认时间1h
     def generate_confirmation_token(self, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'confirm': self.id})
-
     #检验令牌，正确设置confirm字段为true
     def confirm(self, token):
         s = Serializer(current_app.config['SECRET_KEY'])
@@ -121,19 +127,12 @@ class User(UserMixin,db.Model):
         if data.get('confirm') != self.id:
             return False
         self.confirmed = True
-
-
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
-
-
-
-
     def generate_reset_token(self, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'reset': self.id})
-
     def reset_password(self, token, new_password):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
@@ -145,11 +144,9 @@ class User(UserMixin,db.Model):
         self.password = new_password
         db.session.add(self)
         return True
-
     def generate_email_change_token(self, new_email, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'change_email': self.id, 'new_email': new_email})
-
     def change_email(self, token):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
@@ -171,10 +168,8 @@ class User(UserMixin,db.Model):
     def can(self, permissions):
         return self.role is not None and \
             (self.role.permissions & permissions) == permissions
-
     def is_administrator(self):
         return self.can(Permission.ADMINISTER)
-
     def ping(self):
         self.last_seen = datetime.utcnow()
         db.session.add(self)
@@ -184,5 +179,64 @@ class AnonymousUser(AnonymousUserMixin):
 
     def is_administrator(self):
         return False
+
+class TagPointmap(db.Model):
+    __tablename__ = 'tagpoint'
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'),
+                            primary_key=True)
+    point_id = db.Column(db.Integer, db.ForeignKey('points.id'),
+                            primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+
+
+
+
+class Point(db.Model):
+    __tablename__ = 'points'
+    id = db.Column(db.Integer, primary_key=True)
+    explain = db.Column(db.String(128))
+    tag_id = db.relationship('TagPointmap',
+                               foreign_keys=[TagPointmap.tag_id],
+                               backref=db.backref('point', lazy='joined'),
+                               lazy='dynamic',
+                               cascade='all, delete-orphan')
+
+
+    post_id = db.relationship('Post', backref='point', lazy='dynamic')
+
+class Tag(db.Model):
+    __tablename__ = 'tags'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    count = db.Column(db.Integer,default=0)
+    point_id = db.relationship('TagPointmap',
+                               foreign_keys=[TagPointmap.point_id],
+                               backref=db.backref('tag', lazy='joined'),
+                               lazy='dynamic',
+                               cascade='all, delete-orphan')
+
+
+
+class Post(db.Model):
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    post_notice = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    Anonymous = db.Column(db.Boolean, default=True)
+    reprint = db.Column(db.Boolean, default=False)
+
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    point_id = db.Column(db.Integer, db.ForeignKey('points.id'))
+
+    praised = db.relationship('Praise',
+                              foreign_keys=[Praise.post_id],
+                              backref='praises', lazy='dynamic')
+
+
+
 
 login_manager.anonymous_user = AnonymousUser
