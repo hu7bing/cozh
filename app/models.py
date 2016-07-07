@@ -74,7 +74,7 @@ class User(UserMixin,db.Model):
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_hash = db.Column(db.String(32))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-
+    points = db.relationship('Point', backref='author', lazy='dynamic')
     praises = db.relationship('Praise',
                               foreign_keys=[Praise.user_id],
                               backref='praised', lazy='dynamic')
@@ -196,15 +196,26 @@ class TagPointmap(db.Model):
 class Point(db.Model):
     __tablename__ = 'points'
     id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(128))
     explain = db.Column(db.String(128))
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     tag_id = db.relationship('TagPointmap',
-                               foreign_keys=[TagPointmap.tag_id],
+                               foreign_keys=[TagPointmap.point_id],
                                backref=db.backref('point', lazy='joined'),
                                lazy='dynamic',
                                cascade='all, delete-orphan')
 
 
     post_id = db.relationship('Post', backref='point', lazy='dynamic')
+    '''
+    fun:返回指定tag问题的Point对象
+    '''
+    @staticmethod
+    def get_points(self):
+        return db.session.query(Point).select_from(TagPointmap).\
+                filter_by(tag_id = self.id).\
+                join(Point,TagPointmap.tag_id == Point.id)
+
 
 class Tag(db.Model):
     __tablename__ = 'tags'
@@ -212,11 +223,47 @@ class Tag(db.Model):
     name = db.Column(db.String(64))
     count = db.Column(db.Integer,default=0)
     point_id = db.relationship('TagPointmap',
-                               foreign_keys=[TagPointmap.point_id],
+                               foreign_keys=[TagPointmap.tag_id],
                                backref=db.backref('tag', lazy='joined'),
                                lazy='dynamic',
                                cascade='all, delete-orphan')
 
+    '''
+    fun:
+    '''
+    @staticmethod
+    def TagList(taglists,point):
+        #利用循环创建多个tag标签并加到单个point问题，形成中间表TagPointmap
+        #这样就可以利用中间表联结查找一个问题下的多个tag/标签，反之也可查找一个tag标签下的若干个point/问题
+        for taglist in taglists.split(';'):
+            if taglist :
+                tag = Tag.query_by(name = taglist).first()
+                if not tag:
+                    tag = Tag(name = taglist,count = 1)
+
+                else:
+                    tag.count = tag.count+1
+
+
+                #参数左边(tag)代表Tag对象，point同理，创建TagPointmap对象
+                tp = TagPointmap(tag = tag,point = point) #创建多对多关系的中间表TagPointmap
+                #加入数据库
+                db.session.add(tag)
+                db.session.add(tp)
+
+        '''
+    fun:返回指定point问题的Tag对象
+    db.session.query(Tag)                   指定查询返回Tag对象;
+    select_from(TagPointmap)                这个查询从 TagPointmap 模型开始;
+    filter_by(point_id = self.id)           使用问题过滤 TagPointmap 表;
+    join(Tag,TagPointmap.tag_id == Tag.id)  联结 filter_by() 得到的结果和
+                                            Tag对象;联结更加高效
+    '''
+    @staticmethod
+    def get_tags(self):
+        return db.session.query(Tag).select_from(TagPointmap).\
+                filter_by(point_id = self.id).\
+                join(Tag,TagPointmap.tag_id == Tag.id)
 
 
 class Post(db.Model):

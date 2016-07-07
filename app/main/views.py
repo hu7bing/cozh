@@ -3,9 +3,9 @@ from flask import render_template, redirect, url_for, abort, flash, request,\
     current_app, make_response
 from flask.ext.login import login_required, current_user
 from . import main
-from .forms import EditProfileForm, EditProfileAdminForm
+from .forms import EditProfileForm, EditProfileAdminForm,PointForm
 from .. import db
-from ..models import Permission, Role, User
+from ..models import Permission, Role, User,Point,Tag,TagPointmap
 
 
 
@@ -64,3 +64,30 @@ def edit_profile_admin(id):
     form.location.data = user.location
     form.about_me.data = user.about_me
     return render_template('edit_profile.html', form=form, user=user)
+
+@main.route('/edit_point',methods=['GET', 'POST'])
+@login_required
+
+def edit_point():
+    form = PointForm()
+    point = Point(author = current_user)
+    if form.validate_on_submit():
+        point.body = form.body.data
+        point.explain = form.explain.data
+        tags = Tag(name = form.tag.data)
+        Tag.TagList(tags,point)#创建多个tag标签并加到单个point问题，并形成tag和TagPointmap
+                            #两个实例到数据库
+        db.session.add(point)
+
+        db.session.commit()
+
+
+
+        flash('The point has been updated.')
+        return redirect(url_for('point.html', user=current_user,
+                                point = point,tags = tags
+                                ))
+    form.body.data = point.body
+    form.explain.data = point.explain
+    form.tag.data = point.tag_id
+    return render_template('edit_point.html', form=form)

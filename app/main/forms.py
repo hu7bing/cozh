@@ -5,7 +5,7 @@ from wtforms import StringField, TextAreaField, BooleanField, SelectField,\
 from wtforms.validators import Required, Length, Email, Regexp
 from wtforms import ValidationError
 from flask.ext.pagedown.fields import PageDownField
-from ..models import Role, User
+from ..models import Role, User,Point
 
 
 class NameForm(Form):
@@ -50,3 +50,10 @@ class EditProfileAdminForm(Form):
                 User.query.filter_by(username=field.data).first():
             raise ValidationError('Username already in use.')
 
+
+
+class PointForm(Form):
+    body = StringField(u'写下你的问题 :', validators=[Length(0, 128)])
+    explain = StringField(u'问题说明（可选）:', validators=[Length(0, 128)])
+    tag = StringField(u'选择话题 :', validators=[Required(),Length(0, 64)])
+    submit = SubmitField('Submit')
