@@ -53,7 +53,8 @@ class EditProfileAdminForm(Form):
 
 
 class PointForm(Form):
-    body = StringField(u'写下你的问题 :', validators=[Length(0, 128)])
-    explain = StringField(u'问题说明（可选）:', validators=[Length(0, 128)])
-    tag = StringField(u'选择话题 :', validators=[Required(),Length(0, 64)])
-    submit = SubmitField('Submit')
+    body = StringField(u'写下你的问题 :', validators=[Required()])
+    explain = StringField(u'问题说明（可选）:')
+    tags = StringField(u'选择话题 :', validators=[Required()])
+    Anonymous = BooleanField(u'匿名')
+    submit = SubmitField(u'发布')

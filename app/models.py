@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from markdown import markdown
 import bleach
-from flask import current_app, request
+from flask import current_app, request, flash
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from . import db, login_manager
 
@@ -198,6 +198,8 @@ class Point(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(128))
     explain = db.Column(db.String(128))
+    tags = db.Column(db.String(64))
+    Anonymous = db.Column(db.Boolean, default=True)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     tag_id = db.relationship('TagPointmap',
                                foreign_keys=[TagPointmap.point_id],
@@ -207,6 +209,7 @@ class Point(db.Model):
 
 
     post_id = db.relationship('Post', backref='point', lazy='dynamic')
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     '''
     fun:返回指定tag问题的Point对象
     '''
@@ -215,6 +218,22 @@ class Point(db.Model):
         return db.session.query(Point).select_from(TagPointmap).\
                 filter_by(tag_id = self.id).\
                 join(Point,TagPointmap.tag_id == Point.id)
+
+    @staticmethod
+    def check(body):
+        point = Point.query.filter_by(body=body).first()
+        if point:
+            flash(u'已经有一样的问题啦！')
+            return -1
+        else:
+            return 0
+
+
+    @staticmethod
+    def Del(id):
+        point = Point.query.filter_by(author_id = id).all
+        db.session.delete(point)
+        db.session.commit()
 
 
 class Tag(db.Model):
@@ -233,23 +252,39 @@ class Tag(db.Model):
     '''
     @staticmethod
     def TagList(taglists,point):
+        #from sqlalchemy.exc import IntegrityError
         #利用循环创建多个tag标签并加到单个point问题，形成中间表TagPointmap
         #这样就可以利用中间表联结查找一个问题下的多个tag/标签，反之也可查找一个tag标签下的若干个point/问题
         for taglist in taglists.split(';'):
             if taglist :
-                tag = Tag.query_by(name = taglist).first()
+                tag = Tag.query.filter_by(name=taglist).first()
                 if not tag:
-                    tag = Tag(name = taglist,count = 1)
+                    tag = Tag(name = taglist,
+                              count = 1,
+                              #timestamp=datetime.utcnow()
+                              )
 
                 else:
                     tag.count = tag.count+1
 
 
                 #参数左边(tag)代表Tag对象，point同理，创建TagPointmap对象
-                tp = TagPointmap(tag = tag,point = point) #创建多对多关系的中间表TagPointmap
+                tp = TagPointmap(tag = tag,
+                                 point = point,
+                                 #timestamp=datetime.utcnow()
+                                 ) #创建多对多关系的中间表TagPointmap
                 #加入数据库
                 db.session.add(tag)
                 db.session.add(tp)
+                '''
+                try:
+                    db.session.commit()
+                except :
+                    db.session.rollback()
+                    raise
+                finally:
+                    db.session.close()  # optional, depends on use case
+                '''
 
         '''
     fun:返回指定point问题的Tag对象
@@ -260,9 +295,9 @@ class Tag(db.Model):
                                             Tag对象;联结更加高效
     '''
     @staticmethod
-    def get_tags(self):
+    def get_tags(point):
         return db.session.query(Tag).select_from(TagPointmap).\
-                filter_by(point_id = self.id).\
+                filter_by(point = point).\
                 join(Tag,TagPointmap.tag_id == Tag.id)
 
 

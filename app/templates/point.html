@@ -3,14 +3,23 @@
 {% block title %}Flasky{% endblock %}
 
 {% block page_content %}
+
 <div>
     {% for tag in tags %}
-    <span>{{ tag }}</span>
+    <span class="label label-default">{{ tag.name }}</span>
     {% endfor %}
 </div>
 <div>
     {{ point.body }}
     {{ point.explain}}
 </div>
+<div>
+    <span class="">
+        <a href="{{ url_for('.del_point',id = point.id) }}">
+            删除问题
+        </a>
+    </span>
+</div>
+
 
 {% endblock %}

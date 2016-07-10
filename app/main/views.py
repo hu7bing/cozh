@@ -65,29 +65,73 @@ def edit_profile_admin(id):
     form.about_me.data = user.about_me
     return render_template('edit_profile.html', form=form, user=user)
 
+
+'''
+新问题对象的 author 属性值为表达式 current_user._get_current_object()。
+变量current_user 由 Flask-Login 提供,和所有上下文变量一样,也是通过线程内的代理对象实
+现。这个对象的表现类似用户对象,但实际上却是一个轻度包装,包含真正的用户对象。
+数据库需要真正的用户对象,因此要调用 _get_current_object() 方法。
+'''
+
 @main.route('/edit_point',methods=['GET', 'POST'])
 @login_required
 
 def edit_point():
+    from sqlalchemy.exc import IntegrityError
+    #point = Point(author = current_user)
     form = PointForm()
-    point = Point(author = current_user)
     if form.validate_on_submit():
-        point.body = form.body.data
-        point.explain = form.explain.data
-        tags = Tag(name = form.tag.data)
-        Tag.TagList(tags,point)#创建多个tag标签并加到单个point问题，并形成tag和TagPointmap
+        if Point.check(form.body.data) == -1 :
+            return render_template('edit_point.html', form=form)
+        point = Point(body = form.body.data,
+                      explain = form.explain.data,
+                      tags = form.tags.data,
+                      Anonymous = form.Anonymous.data,
+                      author = current_user._get_current_object()
+                      )
+
+        Tag.TagList(point.tags,point)#创建多个tag标签并加到单个point问题，并形成tag和TagPointmap
                             #两个实例到数据库
         db.session.add(point)
-
-        db.session.commit()
-
-
-
+        try:
+            db.session.commit()
+        except :
+            db.session.rollback()
+            raise
+        finally:
+            db.session.close()  # optional, depends on use case
+        #db.session.commit()
         flash('The point has been updated.')
-        return redirect(url_for('point.html', user=current_user,
-                                point = point,tags = tags
-                                ))
-    form.body.data = point.body
-    form.explain.data = point.explain
-    form.tag.data = point.tag_id
+        #tags = Tag.get_tags(point)
+        #return render_template('point.html', point = point,tags = tags,)
+        point = db.session.merge(point)
+        return redirect(url_for('.point',id = point.id))
     return render_template('edit_point.html', form=form)
+
+@main.route('/point/<int:id>',methods=['GET', 'POST'])
+@login_required
+
+def point(id):
+    point = Point.query.get_or_404(id)
+    tags = Tag.get_tags(point)
+    tags = tags
+    return render_template('point.html', point = point,tags = tags,
+
+                           )
+
+@main.route('/del_point/<int:id>',methods=['GET', 'POST'])
+@login_required
+
+def del_point(id):
+    point = Point.query.get_or_404(id)
+    tags = Tag.get_tags(point)
+    for tag in tags :
+        tag.count = tag.count - 1
+        if not tag.count :
+            db.session.delete(tag)
+        else:
+            db.session.add(tag)
+        db.session.commit()
+    db.session.delete(point)
+    db.session.commit()
+    return redirect(url_for('.index'))
