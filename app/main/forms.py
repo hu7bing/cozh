@@ -58,3 +58,8 @@ class PointForm(Form):
     tags = StringField(u'选择话题 :', validators=[Required()])
     Anonymous = BooleanField(u'匿名')
     submit = SubmitField(u'发布')
+
+class AnswerForm(Form):
+    body = PageDownField(u'写下你的答案 :', validators=[Required()])
+    Anonymous = BooleanField(u'匿名')
+    submit = SubmitField(u'发布答案')

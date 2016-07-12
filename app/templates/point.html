@@ -9,10 +9,16 @@
     <span class="label label-default">{{ tag.name }}</span>
     {% endfor %}
 </div>
+<div class="point" align="center">
 <div>
-    {{ point.body }}
+    <b><big>{{ point.body }}</b></big>
+
+</div>
+<div>
     {{ point.explain}}
 </div>
+</div>
+{% if point.author == current_user%}
 <div>
     <span class="">
         <a href="{{ url_for('.del_point',id = point.id) }}">
@@ -20,6 +26,37 @@
         </a>
     </span>
 </div>
+{% endif %}
+<div>
+    {% for post in posts %}
+    <div>
+        {{ post.body }}
+    </div>
+    {% if not show_AnswerForm and post.author == current_user%}
+    <div>
+        <a href="{{ url_for('.point',id = point.id) }}">
+            修改回答
+        </a>
+    </div>
+    {% endif %}
+    <div>
+        {{ post.author.username }}
+    </div>
+    {% endfor %}
+
+</div>
+{% if show_AnswerForm %}
+<div>
+    {{ wtf.quick_form(form) }}
+</div>
+{% else %}
+<div>
+   你已经回答了该问题，你可以
+    <a href="{{ url_for('.point',id = point.id) }}">
+            点击这里来修改回答
+    </a>
+</div>
 
 
+{% endif %}
 {% endblock %}

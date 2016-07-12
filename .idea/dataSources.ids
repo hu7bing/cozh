@@ -135,157 +135,160 @@
       <column id="42" parent="5" name="tags">
         <data-type>varchar(64)</data-type>
       </column>
-      <column id="43" parent="5" name="author_id">
+      <column id="43" parent="5" name="Anonymous">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="44" parent="5" name="author_id">
         <data-type>int(11)</data-type>
       </column>
-      <column id="44" parent="5" name="timestamp">
+      <column id="45" parent="5" name="timestamp">
         <data-type>datetime</data-type>
       </column>
-      <index id="45" parent="5" name="author_id">
+      <index id="46" parent="5" name="author_id">
         <columns>author_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="46" parent="5" name="PRIMARY">
+      <key id="47" parent="5" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="47" parent="5" name="points_ibfk_1">
+      <foreign-key id="48" parent="5" name="points_ibfk_1">
         <columns>author_id</columns>
         <ref-key>~.users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="48" parent="6" name="id">
+      <column id="49" parent="6" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="49" parent="6" name="body">
+      <column id="50" parent="6" name="body">
         <data-type>text</data-type>
       </column>
-      <column id="50" parent="6" name="body_html">
+      <column id="51" parent="6" name="body_html">
         <data-type>text</data-type>
       </column>
-      <column id="51" parent="6" name="post_notice">
+      <column id="52" parent="6" name="post_notice">
         <data-type>text</data-type>
       </column>
-      <column id="52" parent="6" name="timestamp">
+      <column id="53" parent="6" name="timestamp">
         <data-type>datetime</data-type>
       </column>
-      <column id="53" parent="6" name="Anonymous">
+      <column id="54" parent="6" name="Anonymous">
         <data-type>tinyint(1)</data-type>
       </column>
-      <column id="54" parent="6" name="reprint">
+      <column id="55" parent="6" name="reprint">
         <data-type>tinyint(1)</data-type>
       </column>
-      <column id="55" parent="6" name="author_id">
+      <column id="56" parent="6" name="author_id">
         <data-type>int(11)</data-type>
       </column>
-      <column id="56" parent="6" name="point_id">
+      <column id="57" parent="6" name="point_id">
         <data-type>int(11)</data-type>
       </column>
-      <index id="57" parent="6" name="author_id">
+      <index id="58" parent="6" name="author_id">
         <columns>author_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="58" parent="6" name="ix_posts_timestamp">
+      <index id="59" parent="6" name="ix_posts_timestamp">
         <columns>timestamp</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="59" parent="6" name="point_id">
+      <index id="60" parent="6" name="point_id">
         <columns>point_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="60" parent="6" name="PRIMARY">
+      <key id="61" parent="6" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="61" parent="6" name="posts_ibfk_1">
+      <foreign-key id="62" parent="6" name="posts_ibfk_1">
         <columns>author_id</columns>
         <ref-key>~.users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="62" parent="6" name="posts_ibfk_2">
+      <foreign-key id="63" parent="6" name="posts_ibfk_2">
         <columns>point_id</columns>
         <ref-key>~.points.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="63" parent="7" name="user_id">
+      <column id="64" parent="7" name="user_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="64" parent="7" name="post_id">
+      <column id="65" parent="7" name="post_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="65" parent="7" name="timestamp">
+      <column id="66" parent="7" name="timestamp">
         <data-type>datetime</data-type>
       </column>
-      <index id="66" parent="7" name="post_id">
+      <index id="67" parent="7" name="post_id">
         <columns>post_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="67" parent="7" name="PRIMARY">
+      <key id="68" parent="7" name="PRIMARY">
         <columns>user_id
 post_id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="68" parent="7" name="praises_ibfk_1">
+      <foreign-key id="69" parent="7" name="praises_ibfk_1">
         <columns>post_id</columns>
         <ref-key>~.posts.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="69" parent="7" name="praises_ibfk_2">
+      <foreign-key id="70" parent="7" name="praises_ibfk_2">
         <columns>user_id</columns>
         <ref-key>~.users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="70" parent="8" name="tag_id">
+      <column id="71" parent="8" name="tag_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="71" parent="8" name="point_id">
+      <column id="72" parent="8" name="point_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="72" parent="8" name="timestamp">
+      <column id="73" parent="8" name="timestamp">
         <data-type>datetime</data-type>
       </column>
-      <index id="73" parent="8" name="point_id">
+      <index id="74" parent="8" name="point_id">
         <columns>point_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="74" parent="8" name="PRIMARY">
+      <key id="75" parent="8" name="PRIMARY">
         <columns>tag_id
 point_id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="75" parent="8" name="tagpoint_ibfk_1">
+      <foreign-key id="76" parent="8" name="tagpoint_ibfk_1">
         <columns>point_id</columns>
         <ref-key>~.points.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="76" parent="8" name="tagpoint_ibfk_2">
+      <foreign-key id="77" parent="8" name="tagpoint_ibfk_2">
         <columns>tag_id</columns>
         <ref-key>~.tags.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="77" parent="9" name="id">
+      <column id="78" parent="9" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="78" parent="9" name="name">
+      <column id="79" parent="9" name="name">
         <data-type>varchar(64)</data-type>
       </column>
-      <column id="79" parent="9" name="count">
+      <column id="80" parent="9" name="count">
         <data-type>int(11)</data-type>
       </column>
-      <key id="80" parent="9" name="PRIMARY">
+      <key id="81" parent="9" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

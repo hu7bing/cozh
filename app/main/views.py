@@ -3,9 +3,9 @@ from flask import render_template, redirect, url_for, abort, flash, request,\
     current_app, make_response
 from flask.ext.login import login_required, current_user
 from . import main
-from .forms import EditProfileForm, EditProfileAdminForm,PointForm
+from .forms import EditProfileForm, EditProfileAdminForm,PointForm,AnswerForm
 from .. import db
-from ..models import Permission, Role, User,Point,Tag,TagPointmap
+from ..models import Permission, Role, User,Point,Tag,TagPointmap,Post
 
 
 
@@ -112,12 +112,43 @@ def edit_point():
 @login_required
 
 def point(id):
+    form = AnswerForm()
+    if current_user.can(Permission.WRITE_ARTICLES) and \
+        form.validate_on_submit():
+        post = Post(body=form.body.data,
+                    Anonymous=form.Anonymous.data,
+                    point=Point.query.get_or_404(id),
+                    author=current_user._get_current_object(),
+                    )
+        db.session.add(post)
+
     point = Point.query.get_or_404(id)
     tags = Tag.get_tags(point)
     tags = tags
-    return render_template('point.html', point = point,tags = tags,
 
+    #posts = Post.query.filter_by(point = point).count
+    posts = Post.query.filter_by(point = point).all()
+    show_AnswerForm = 1
+    for post in posts:
+        if post.author == current_user:
+            show_AnswerForm = 0
+
+    #用于修改回答
+    if show_AnswerForm ==0 :
+        cur_post = Post.query.filter_by(point = point).filter_by(author = current_user).first()
+        form.body.data = cur_post.body
+        form.Anonymous.data = cur_post.Anonymous
+        #form.body.data = cur_post.body,
+        #form.body.data = cur_post.body,
+
+    return render_template('point.html', point = point,tags = tags,posts=posts,form=form,
+                           show_AnswerForm=show_AnswerForm,
                            )
+
+
+
+
+
 
 @main.route('/del_point/<int:id>',methods=['GET', 'POST'])
 @login_required
