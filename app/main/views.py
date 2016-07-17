@@ -113,41 +113,59 @@ def edit_point():
 
 def point(id):
     form = AnswerForm()
-    if current_user.can(Permission.WRITE_ARTICLES) and \
-        form.validate_on_submit():
-        post = Post(body=form.body.data,
-                    Anonymous=form.Anonymous.data,
-                    point=Point.query.get_or_404(id),
-                    author=current_user._get_current_object(),
-                    )
-        db.session.add(post)
-
     point = Point.query.get_or_404(id)
     tags = Tag.get_tags(point)
     tags = tags
-
-    #posts = Post.query.filter_by(point = point).count
     posts = Post.query.filter_by(point = point).all()
     show_AnswerForm = 1
     for post in posts:
         if post.author == current_user:
             show_AnswerForm = 0
 
-    #用于修改回答
-    if show_AnswerForm ==0 :
-        cur_post = Post.query.filter_by(point = point).filter_by(author = current_user).first()
-        form.body.data = cur_post.body
-        form.Anonymous.data = cur_post.Anonymous
-        #form.body.data = cur_post.body,
-        #form.body.data = cur_post.body,
+    if current_user.can(Permission.WRITE_ARTICLES) and \
+        form.validate_on_submit():
+        if show_AnswerForm:
+            post = Post(body=form.body.data,
+                        Anonymous=form.Anonymous.data,
+                        point=Point.query.get_or_404(id),
+                        author=current_user._get_current_object(),
+                        )
+            db.session.add(post)
+            return redirect(url_for('.point',id = id))
+        else:
+            flash(u'你已经回答了该问题.')
+            return redirect(url_for('.point',id = id))
 
     return render_template('point.html', point = point,tags = tags,posts=posts,form=form,
                            show_AnswerForm=show_AnswerForm,
                            )
 
 
+@main.route('/post_edit/<int:id>',methods=['GET', 'POST'])
+@login_required
 
+def post_edit(id):
+    point = Point.query.get_or_404(id)
+    #point = Point.query.get_or_404(id)
+    tags = Tag.get_tags(point)
+    tags = tags
+    posts = Post.query.filter_by(point = point).all()
 
+    post = Post.query.filter_by(point = point).\
+    filter_by(author = current_user).first()
+
+    form = AnswerForm()
+
+    if current_user.can(Permission.WRITE_ARTICLES) and \
+        form.validate_on_submit():
+        post.body = form.body.data
+        post.Anonymous = form.Anonymous.data
+        db.session.add(post)#更新回答
+        flash('The Answer has been updated.')
+        return redirect(url_for('.point',id = id))
+    form.body.data = post.body
+    form.Anonymous.data = post.Anonymous
+    return render_template('post_edit.html',point = point,tags = tags,posts=posts,form=form,)
 
 
 @main.route('/del_point/<int:id>',methods=['GET', 'POST'])
