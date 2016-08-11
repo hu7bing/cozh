@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca1b55e2-193b-40ed-b04e-04224cf329bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/forms.py" afterPath="$PROJECT_DIR$/app/main/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/views.py" afterPath="$PROJECT_DIR$/app/main/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/point.html" afterPath="$PROJECT_DIR$/app/templates/point.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/post_edit.html" afterPath="$PROJECT_DIR$/app/templates/post_edit.html" />
     </list>
     <ignored path="cozh.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,44 +40,6 @@
       </PATH_ELEMENT>
     </PATH>
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/app/models.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="-4.0342464">
-                    <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
-                    <folding>
-                      <element signature="e#24#53#0" expanded="true" />
-                      <element signature="e#3133#3661#0" expanded="false" />
-                      <element signature="e#3861#3921#0" expanded="false" />
-                      <element signature="e#4011#4064#0" expanded="false" />
-                      <element signature="e#4173#4229#0" expanded="false" />
-                      <element signature="e#4327#4432#0" expanded="false" />
-                      <element signature="e#4500#4809#0" expanded="false" />
-                      <element signature="e#4877#4912#0" expanded="false" />
-                      <element signature="e#4974#5077#0" expanded="false" />
-                      <element signature="e#5137#5425#0" expanded="false" />
-                      <element signature="e#5505#5639#0" expanded="false" />
-                      <element signature="e#5683#6256#0" expanded="false" />
-                      <element signature="e#6297#6396#0" expanded="false" />
-                      <element signature="e#6437#6475#0" expanded="false" />
-                      <element signature="e#6504#6567#0" expanded="false" />
-                      <element signature="e#6649#6661#0" expanded="false" />
-                      <element signature="e#6703#6715#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="cozh" />
@@ -83,17 +50,17 @@
         <entry file="file://$PROJECT_DIR$/app/main/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/main/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="128" column="11" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.65467626">
+              <caret line="148" column="32" selection-start-line="148" selection-start-column="32" selection-end-line="148" selection-end-column="32" />
               <folding>
                 <element signature="e#24#132#0" expanded="true" />
               </folding>
@@ -101,26 +68,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cozh.users" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.users">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+      <file leaf-file-name="comments.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/comments.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="40" />
               <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit_point.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/edit_point.html">
+      <file leaf-file-name="_comments.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/_comments.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5">
-              <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+            <state vertical-scroll-proportion="-5.625">
+              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -129,8 +91,28 @@
       <file leaf-file-name="point.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/point.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.125">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="-20.625">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post_edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/post_edit_form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="posts.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/posts.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -139,28 +121,8 @@
       <file leaf-file-name="post_edit.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/post_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.75">
-              <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7620321">
-              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/my.html">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-3.125">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -181,13 +143,41 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="342" column="55" selection-start-line="342" selection-start-column="51" selection-end-line="342" selection-end-column="55" />
+              <folding>
+                <element signature="e#24#53#0" expanded="true" />
+                <element signature="e#4021#4549#0" expanded="false" />
+                <element signature="e#4749#4809#0" expanded="false" />
+                <element signature="e#4899#4952#0" expanded="false" />
+                <element signature="e#5061#5117#0" expanded="false" />
+                <element signature="e#5215#5320#0" expanded="false" />
+                <element signature="e#5388#5697#0" expanded="false" />
+                <element signature="e#5765#5800#0" expanded="false" />
+                <element signature="e#5862#5965#0" expanded="false" />
+                <element signature="e#6025#6313#0" expanded="false" />
+                <element signature="e#6393#6527#0" expanded="false" />
+                <element signature="e#6571#7144#0" expanded="false" />
+                <element signature="e#7185#7284#0" expanded="false" />
+                <element signature="e#7325#7363#0" expanded="false" />
+                <element signature="e#7392#7455#0" expanded="false" />
+                <element signature="e#7537#7549#0" expanded="false" />
+                <element signature="e#7591#7603#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
         <option value="HTML4 File" />
       </list>
     </option>
@@ -207,19 +197,24 @@
         <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/app/auth/forms.py" />
-        <option value="$PROJECT_DIR$/app/auth/views.py" />
         <option value="dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.posts" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/templates/edit_point.html" />
-        <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/templates/base.html" />
         <option value="$PROJECT_DIR$/app/templates/my.html" />
         <option value="$PROJECT_DIR$/app/templates/question.html" />
-        <option value="$PROJECT_DIR$/app/main/forms.py" />
-        <option value="$PROJECT_DIR$/app/main/views.py" />
-        <option value="$PROJECT_DIR$/app/templates/point.html" />
-        <option value="$PROJECT_DIR$/app/templates/post_edit.html" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/app/auth/views.py" />
+        <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/app/main/forms.py" />
+        <option value="$PROJECT_DIR$/app/templates/posts.html" />
+        <option value="$PROJECT_DIR$/app/templates/_comments.html" />
+        <option value="$PROJECT_DIR$/app/templates/post_edit_form.py" />
+        <option value="$PROJECT_DIR$/app/templates/point.html" />
+        <option value="$PROJECT_DIR$/app/templates/comments.html" />
+        <option value="$PROJECT_DIR$/app/templates/post_edit.html" />
+        <option value="$PROJECT_DIR$/app/templates/post_edit_form.html" />
+        <option value="$PROJECT_DIR$/app/main/views.py" />
       </list>
     </option>
   </component>
@@ -229,10 +224,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="37" />
-    <option name="y" value="54" />
-    <option name="width" value="1171" />
-    <option name="height" value="718" />
+    <option name="x" value="45" />
+    <option name="y" value="37" />
+    <option name="width" value="1193" />
+    <option name="height" value="1008" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -325,24 +320,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cozh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cozh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -573,17 +550,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="54" width="1171" height="718" extended-state="0" />
+    <frame x="45" y="37" width="1193" height="1008" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.190561" sideWeight="0.6892361" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19737992" sideWeight="0.6892361" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11843277" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.074235804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899868" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32880098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23445825" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15123095" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16520211" sideWeight="0.3107639" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -612,12 +589,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/app/models.py</url>
-          <line>313</line>
+          <line>335</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/app/models.py</url>
-          <line>135</line>
+          <line>157</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -626,76 +603,28 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.users">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.roles">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#24#47#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="79" column="52" selection-start-line="79" selection-start-column="52" selection-end-line="79" selection-end-column="52" />
           <folding>
             <element signature="e#24#53#0" expanded="true" />
-            <element signature="e#3133#3661#0" expanded="false" />
-            <element signature="e#3861#3921#0" expanded="false" />
-            <element signature="e#4011#4064#0" expanded="false" />
-            <element signature="e#4173#4229#0" expanded="false" />
-            <element signature="e#4327#4432#0" expanded="false" />
-            <element signature="e#4500#4809#0" expanded="false" />
-            <element signature="e#4877#4912#0" expanded="false" />
-            <element signature="e#4974#5077#0" expanded="false" />
-            <element signature="e#5137#5425#0" expanded="false" />
-            <element signature="e#5505#5639#0" expanded="false" />
-            <element signature="e#5683#6256#0" expanded="false" />
-            <element signature="e#6297#6396#0" expanded="false" />
-            <element signature="e#6437#6475#0" expanded="false" />
-            <element signature="e#6504#6567#0" expanded="false" />
-            <element signature="e#6649#6661#0" expanded="false" />
-            <element signature="e#6703#6715#0" expanded="false" />
+            <element signature="e#4021#4549#0" expanded="false" />
+            <element signature="e#4749#4809#0" expanded="false" />
+            <element signature="e#4899#4952#0" expanded="false" />
+            <element signature="e#5061#5117#0" expanded="false" />
+            <element signature="e#5215#5320#0" expanded="false" />
+            <element signature="e#5388#5697#0" expanded="false" />
+            <element signature="e#5765#5800#0" expanded="false" />
+            <element signature="e#5862#5965#0" expanded="false" />
+            <element signature="e#6025#6313#0" expanded="false" />
+            <element signature="e#6393#6527#0" expanded="false" />
+            <element signature="e#6571#7144#0" expanded="false" />
+            <element signature="e#7185#7284#0" expanded="false" />
+            <element signature="e#7325#7363#0" expanded="false" />
+            <element signature="e#7392#7455#0" expanded="false" />
+            <element signature="e#7537#7549#0" expanded="false" />
+            <element signature="e#7591#7603#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -711,7 +640,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="68" selection-start-line="65" selection-start-column="68" selection-end-line="65" selection-end-column="68" />
-          <folding />
+          <folding>
+            <element signature="e#24#92#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -785,22 +716,22 @@
           <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
           <folding>
             <element signature="e#24#53#0" expanded="true" />
-            <element signature="e#3133#3661#0" expanded="false" />
-            <element signature="e#3861#3921#0" expanded="false" />
-            <element signature="e#4011#4064#0" expanded="false" />
-            <element signature="e#4173#4229#0" expanded="false" />
-            <element signature="e#4327#4432#0" expanded="false" />
-            <element signature="e#4500#4809#0" expanded="false" />
-            <element signature="e#4877#4912#0" expanded="false" />
-            <element signature="e#4974#5077#0" expanded="false" />
-            <element signature="e#5137#5425#0" expanded="false" />
-            <element signature="e#5505#5639#0" expanded="false" />
-            <element signature="e#5683#6256#0" expanded="false" />
-            <element signature="e#6297#6396#0" expanded="false" />
-            <element signature="e#6437#6475#0" expanded="false" />
-            <element signature="e#6504#6567#0" expanded="false" />
-            <element signature="e#6649#6661#0" expanded="false" />
-            <element signature="e#6703#6715#0" expanded="false" />
+            <element signature="e#4021#4549#0" expanded="false" />
+            <element signature="e#4749#4809#0" expanded="false" />
+            <element signature="e#4899#4952#0" expanded="false" />
+            <element signature="e#5061#5117#0" expanded="false" />
+            <element signature="e#5215#5320#0" expanded="false" />
+            <element signature="e#5388#5697#0" expanded="false" />
+            <element signature="e#5765#5800#0" expanded="false" />
+            <element signature="e#5862#5965#0" expanded="false" />
+            <element signature="e#6025#6313#0" expanded="false" />
+            <element signature="e#6393#6527#0" expanded="false" />
+            <element signature="e#6571#7144#0" expanded="false" />
+            <element signature="e#7185#7284#0" expanded="false" />
+            <element signature="e#7325#7363#0" expanded="false" />
+            <element signature="e#7392#7455#0" expanded="false" />
+            <element signature="e#7537#7549#0" expanded="false" />
+            <element signature="e#7591#7603#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -816,7 +747,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#24#92#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -876,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40553746">
           <caret line="185" column="4" selection-start-line="185" selection-start-column="4" selection-end-line="185" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,7 +847,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.roles">
+    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.291667">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625">
+          <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.625">
+          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31746033">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/my.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/edit_point.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.571428">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/auth/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+          <folding>
+            <element signature="e#24#92#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.praises">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -928,11 +922,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.291667">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.users">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -962,73 +961,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/main/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625">
-          <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.625">
-          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/auth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48245615">
-          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31746033">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0342464">
-          <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
-          <folding>
-            <element signature="e#24#53#0" expanded="true" />
-            <element signature="e#3133#3661#0" expanded="false" />
-            <element signature="e#3861#3921#0" expanded="false" />
-            <element signature="e#4011#4064#0" expanded="false" />
-            <element signature="e#4173#4229#0" expanded="false" />
-            <element signature="e#4327#4432#0" expanded="false" />
-            <element signature="e#4500#4809#0" expanded="false" />
-            <element signature="e#4877#4912#0" expanded="false" />
-            <element signature="e#4974#5077#0" expanded="false" />
-            <element signature="e#5137#5425#0" expanded="false" />
-            <element signature="e#5505#5639#0" expanded="false" />
-            <element signature="e#5683#6256#0" expanded="false" />
-            <element signature="e#6297#6396#0" expanded="false" />
-            <element signature="e#6437#6475#0" expanded="false" />
-            <element signature="e#6504#6567#0" expanded="false" />
-            <element signature="e#6649#6661#0" expanded="false" />
-            <element signature="e#6703#6715#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.points">
+    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.roles">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1054,15 +987,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/my.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.125">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.users">
+    <entry file="dbDummy://dbtable:/8c0360d5/cdd72da0-df64-4b3d-afe8-c1d3cdf85e3c/cozh.points">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1075,45 +1000,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/edit_point.html">
+    <entry file="file://$PROJECT_DIR$/app/main/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/main/views.py">
+    <entry file="file://$PROJECT_DIR$/app/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="128" column="11" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
+          <caret line="342" column="55" selection-start-line="342" selection-start-column="51" selection-end-line="342" selection-end-column="55" />
           <folding>
-            <element signature="e#24#132#0" expanded="true" />
+            <element signature="e#24#53#0" expanded="true" />
+            <element signature="e#4021#4549#0" expanded="false" />
+            <element signature="e#4749#4809#0" expanded="false" />
+            <element signature="e#4899#4952#0" expanded="false" />
+            <element signature="e#5061#5117#0" expanded="false" />
+            <element signature="e#5215#5320#0" expanded="false" />
+            <element signature="e#5388#5697#0" expanded="false" />
+            <element signature="e#5765#5800#0" expanded="false" />
+            <element signature="e#5862#5965#0" expanded="false" />
+            <element signature="e#6025#6313#0" expanded="false" />
+            <element signature="e#6393#6527#0" expanded="false" />
+            <element signature="e#6571#7144#0" expanded="false" />
+            <element signature="e#7185#7284#0" expanded="false" />
+            <element signature="e#7325#7363#0" expanded="false" />
+            <element signature="e#7392#7455#0" expanded="false" />
+            <element signature="e#7537#7549#0" expanded="false" />
+            <element signature="e#7591#7603#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/point.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/posts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.125">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/post_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.75">
-          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        <state vertical-scroll-proportion="-3.125">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/app/templates/post_edit_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7620321">
-          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/point.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.625">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/comments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/_comments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.625">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65467626">
+          <caret line="148" column="32" selection-start-line="148" selection-start-column="32" selection-end-line="148" selection-end-column="32" />
+          <folding>
+            <element signature="e#24#132#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -3,9 +3,9 @@ from flask import render_template, redirect, url_for, abort, flash, request,\
     current_app, make_response
 from flask.ext.login import login_required, current_user
 from . import main
-from .forms import EditProfileForm, EditProfileAdminForm,PointForm,AnswerForm
+from .forms import EditProfileForm, EditProfileAdminForm,PointForm,AnswerForm,CommentForm
 from .. import db
-from ..models import Permission, Role, User,Point,Tag,TagPointmap,Post
+from ..models import Permission, Role, User,Point,Tag,TagPointmap,Post,Comment
 
 
 
@@ -122,8 +122,20 @@ def point(id):
         if post.author == current_user:
             show_AnswerForm = 0
 
+        Comment_form = CommentForm()
+        if Comment_form.validate_on_submit():
+            comments =Comment(body=Comment_form.body.data,
+                             post=post,
+                             author=current_user._get_current_object()
+            )
+            db.session.add(comments)
+            flash('Your comment has been published.')
+            return redirect(url_for('.comments_only',id = post.id,Post = Post))
+
+
     if current_user.can(Permission.WRITE_ARTICLES) and \
         form.validate_on_submit():
+        #comments = Comment.query.filter_by(post = post).all()
         if show_AnswerForm:
             post = Post(body=form.body.data,
                         Anonymous=form.Anonymous.data,
@@ -131,15 +143,16 @@ def point(id):
                         author=current_user._get_current_object(),
                         )
             db.session.add(post)
+
             return redirect(url_for('.point',id = id))
         else:
             flash(u'你已经回答了该问题.')
             return redirect(url_for('.point',id = id))
 
+    comments = Comment.query.filter_by(post = post).all()
     return render_template('point.html', point = point,tags = tags,posts=posts,form=form,
-                           show_AnswerForm=show_AnswerForm,
+                           show_AnswerForm=show_AnswerForm,Comment_form = Comment_form,comments = comments
                            )
-
 
 @main.route('/post_edit/<int:id>',methods=['GET', 'POST'])
 @login_required
@@ -156,17 +169,58 @@ def post_edit(id):
 
     form = AnswerForm()
 
+    Comment_form = CommentForm()
+    if Comment_form.validate_on_submit():
+        comments =Comment(body=Comment_form.body.data,
+                         post=post,
+                         author=current_user._get_current_object()
+        )
+        db.session.add(comments)
+        flash('Your comment has been published.')
+        return redirect(url_for('.comments_only',Comment_form=Comment_form,comments=comments))
+
+
     if current_user.can(Permission.WRITE_ARTICLES) and \
         form.validate_on_submit():
         post.body = form.body.data
         post.Anonymous = form.Anonymous.data
         db.session.add(post)#更新回答
+
+        comments = Post.comments
+
         flash('The Answer has been updated.')
-        return redirect(url_for('.point',id = id))
+        return redirect(url_for('.point',id = id,Comment_form=Comment_form,comments=comments))
     form.body.data = post.body
     form.Anonymous.data = post.Anonymous
-    return render_template('post_edit.html',point = point,tags = tags,posts=posts,form=form,)
 
+    comments = Post.comments.all
+
+    return render_template('post_edit.html',point = point,tags = tags,posts=posts,form=form,Comment_form=Comment_form,comments=comments
+                           ,)
+
+@main.route('/comments_only',methods=['GET', 'POST'])
+@login_required
+def comments_only(id):
+
+    return render_template('comments.html',)
+
+
+
+@main.route('/post/<int:id>',methods=['GET', 'POST'])
+@login_required
+def post(id):
+    posts = Post.query.get_or_404(id)
+    point = Point.query.filter(post = posts).first()
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment =Comment(body=form.body.data,
+                         post=post,
+                         author=current_user._get_current_object()
+        )
+        db.session.add(comment)
+        flash('Your comment has been published.')
+
+    return render_template('posts.html',posts=posts,point=point,)
 
 @main.route('/del_point/<int:id>',methods=['GET', 'POST'])
 @login_required

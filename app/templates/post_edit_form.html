@@ -1,0 +1,14 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% if show_AnswerForm %}
+<div>
+    {{ wtf.quick_form(form) }}
+</div>
+{% else %}
+<div>
+   你已经回答了该问题，你可以
+    <a href="{{ url_for('.post_edit',id = point.id) }}">
+            点击这里来修改回答
+    </a>
+</div>
+
+{% endif %}

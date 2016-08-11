@@ -1,0 +1,8 @@
+{% import "bootstrap/wtf.html" as wtf %}
+<h4 id="comments">Comments</h4>
+{% if current_user.can(Permission.COMMENT) %}
+<div class="comment-form">
+    {{ wtf.quick_form(Comment_form) }}
+</div>
+{% endif %}
+{% include '_comments.html' %}

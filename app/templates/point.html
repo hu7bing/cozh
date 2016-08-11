@@ -28,37 +28,11 @@
 </div>
 {% endif %}
 <div>
-    {% for post in posts %}
-    <div>
-        {{ post.body }}
-    </div>
-    {% if not show_AnswerForm and post.author == current_user%}
-    <div>
-        <a href="{{ url_for('.post_edit',id = point.id) }}">
-            修改回答
-        </a>
-    </div>
-    {% endif %}
-    <div>
-        {{ post.author.username }}
-    </div>
-    {% endfor %}
+{% include 'posts.html' %}
 
 </div>
 
 
-{% if show_AnswerForm %}
-<div>
-    {{ wtf.quick_form(form) }}
-</div>
-{% else %}
-<div>
-   你已经回答了该问题，你可以
-    <a href="{{ url_for('.post_edit',id = point.id) }}">
-            点击这里来修改回答
-    </a>
-</div>
-
-{% endif %}
+{% include 'post_edit_form.html' %}
 
 {% endblock %}

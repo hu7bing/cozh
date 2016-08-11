@@ -1,0 +1,18 @@
+    {% for post in posts %}
+    <div>
+        {{ post.body }}
+    </div>
+    <div>
+        {% include 'comments.html' %}
+    </div>
+    {% if not show_AnswerForm and post.author == current_user%}
+    <div>
+        <a href="{{ url_for('.post_edit',id = point.id) }}">
+            修改回答
+        </a>
+    </div>
+    {% endif %}
+    <div>
+        {{ post.author.username }}
+    </div>
+    {% endfor %}

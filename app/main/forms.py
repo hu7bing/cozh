@@ -63,3 +63,7 @@ class AnswerForm(Form):
     body = PageDownField(u'写下你的答案 :', validators=[Required()])
     Anonymous = BooleanField(u'匿名')
     submit = SubmitField(u'发布答案')
+
+class CommentForm(Form):
+    body = StringField('Enter your comment', validators=[Required()])
+    submit = SubmitField(u'评论')
